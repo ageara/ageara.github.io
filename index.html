@@ -24,13 +24,13 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $.getJSON('http://catalogue.data.gov.bc.ca/api/3/action/package_search?q=sub_org:"04215a2c-c0b4-4829-a082-bb9467f20e1c"', function(data) {
+      $.getJSON('http://uat-api.bcdevexchange.org/bcdc/3/action/package_search?q=sub_org:"04215a2c-c0b4-4829-a082-bb9467f20e1c"', function(data) {
 
         console.log(data.result.count);
         console.log(data.result.results[1].title);
         console.log(data.result.results[1].notes);
         console.log(data.result.results[1].name);
-        console.log("http://catalogue.data.gov.bc.ca/dataset/"+data.result.results[1].name);
+       // console.log("http://catalogue.data.gov.bc.ca/dataset/"+data.result.results[1].name);
 
         /* write the table now*/
         $('#example').dataTable({
