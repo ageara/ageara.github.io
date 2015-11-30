@@ -25,7 +25,7 @@
   <script type="text/javascript">
   $.ajaxSetup({ cache: true }); // remove jQuery _ timestamp from requests
     $(document).ready(function() {
-     $.getJSON('http://catalogue.data.gov.bc.ca/api/action/package_search?q=sub_org:"04215a2c-c0b4-4829-a082-bb9467f20e1c"+"&callback=?"', function(data) {
+     $.getJSON('https://catalogue.data.gov.bc.ca/api/action/package_search?q=sub_org:04215a2c-c0b4-4829-a082-bb9467f20e1c&callback=?&rows=1000', function(data) {
     //  $.getJSON('http://uat-api.bcdevexchange.org/bcdc/3/action/package_search?q=sub_org:"04215a2c-c0b4-4829-a082-bb9467f20e1c', function(data) {
 
        // console.log(data.result.count);
