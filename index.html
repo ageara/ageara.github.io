@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <!-- bootstrap Tables -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 
@@ -99,10 +96,11 @@
       $.getJSON(
         "https://catalogue.data.gov.bc.ca/api/3/action/package_show?id=" + varName + "&callback=?", function (data) {
 
-          $("div.alert.alert-success").html("UUID:  " + data.result.id);
-          $("div.alert.alert-info").html("FC:  " + data.result.object_name);
-          $("div.alert.alert-warning").html("ODSI:  " + data.result.odsi_uid);
-          $("div.alert.alert-danger").html("DISCOVERY:  " + data.result.metastar_uid);
+          $("div.fixed-table-container").html(
+            "<tr> DC:Title " + data.result.id +
+            "</tr>" + " DC:Identifier " + data.result.title + "</tr>");
+
+
         }
       );
 
@@ -124,7 +122,7 @@
       <li>
         <a data-toggle="pill" href="#menu1">PackageShow</a>
       </li>
-            <li>
+      <li>
         <a data-toggle="pill" href="#menu2">ResourceTable</a>
       </li>
     </ul>
@@ -167,26 +165,84 @@
               <button type="button" class="btn btn-lg btn-primary" onclick="APIcaller()">Inspect Package</button>
             </p>
           </div>
-          <P>UUID:
-            <div class="alert alert-success" role="alert">
-              <strong>Package UUID </strong>
-            </div>
-          </P>
-          <P>Featureclass:
-            <div class="alert alert-info" role="alert">
-              <strong>Featureclass </strong>
-            </div>
-          </P>
-          <div class="alert alert-warning" role="alert">
-            <strong> ODSI UID</strong>
+          <div class="fixed-table-body">
+            <div class="fixed-table-loading" style="top: 41px;">Loading, please wait...</div>
+            <table data-toggle="table" class="table table-hover">
+              <thead>
+                <tr>
+                  <th style="" data-field="0">
+                    <div class="th-inner ">Name</div>
+                    <div class="fht-cell"></div>
+                  </th>
+                  <th style="" data-field="1">
+                    <div class="th-inner ">Stars</div>
+                    <div class="fht-cell"></div>
+                  </th>
+                  <th style="" data-field="2">
+                    <div class="th-inner ">Forks</div>
+                    <div class="fht-cell"></div>
+                  </th>
+                  <th style="" data-field="3">
+                    <div class="th-inner ">Description</div>
+                    <div class="fht-cell"></div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="tr-id-1" class="tr-class-1" data-index="0" data-title="bootstrap table">
+                  <td id="td-id-1" class="td-class-1" style="" data-title="bootstrap table">
+                    <a href="https://">Creator</a>
+                  </td>
+                  <td style="" data-value="526">526</td>
+                  <td style="" data-text="122">122</td>
+                  <td style="" data-i18n="Description">An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features. (supports
+                    twitter bootstrap v2 and v3)
+                  </td>
+                </tr>
+                <tr id="tr-id-2" class="tr-class-2" data-index="1">
+                  <td id="td-id-2" class="td-class-2" style="">
+                    <a href="https://">Date_Created</a>
+                  </td>
+                  <td style="">288</td>
+                  <td style="">150</td>
+                  <td style="">A jQuery plugin to select multiple elements with checkboxes :)
+                  </td>
+                </tr>
+                <tr id="tr-id-3" class="tr-class-3" data-index="2">
+                  <td id="td-id-3" class="td-class-3" style="">
+                    <a href="https://">Date_Modified</a>
+                  </td>
+                  <td style="">32</td>
+                  <td style="">11</td>
+                  <td style="">Show/hide password plugin for twitter bootstrap.
+                  </td>
+                </tr>
+                <tr id="tr-id-4" class="tr-class-4" data-index="3">
+                  <td id="td-id-4" class="td-class-4" style="">
+                    <a href="https://">Title</a>
+                  </td>
+                  <td style="">13</td>
+                  <td style="">4</td>
+                  <td style="">my blog</td>
+                </tr>
+                <tr id="tr-id-5" class="tr-class-5" data-index="4">
+                  <td id="td-id-5" class="td-class-5" style="">
+                    <a href="https://">Keywords</a>
+                  </td>
+                  <td style="">6</td>
+                  <td style="">3</td>
+                  <td style="">Redmine notification tools for chrome extension.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="alert alert-danger" role="alert">
-            <strong> Discovery UID</strong>
-          </div>
+
+
+
         </div>
 
       </div>
-     
+
       <div id="menu2" class="tab-pane fade">
         <div class="container">
           <header>
@@ -211,6 +267,8 @@
         </div>
       </div>
     </div>
+
+
 
 </body>
 
