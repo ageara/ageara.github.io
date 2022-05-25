@@ -17,7 +17,7 @@
 
     $(document).ready(function () {
       //load the datastore table data into tablearray
-      $.getJSON("https://catalogue.data.gov.bc.ca/api/action/datastore_search?resource_id=b12cd4cc-b58b-4079-b630-a20b6df58e8d&limit=1000&",
+      $.getJSON("https://catalogue.data.gov.bc.ca/api/action/datastore_search?resource_id=681b4fa5-13a5-4273-a189-fc101f0f8356&limit=1000&",
         function (data) {
           //    console.log(data.result.records[0]);
           // create a blank array
@@ -28,7 +28,7 @@
           $.each(data.result.records, function (key, val) {
             tablearray.push(val);
             //console.log('what', val);
-            items.push("<li id='" + key + "'>" + val.PROJECT_NAME + " $" + val.PROJECT_TYPE + "</li>");
+            items.push("<li id='" + key + "'>" + val.RG_NAME + " $" + val.CITY + "</li>");
 
           });
 
